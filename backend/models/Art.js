@@ -1,3 +1,3 @@
-console.log("Schema...");
-console.log("Schema...");
-console.log("Schema...");
+import mongoose from "mongoose"
+
+
