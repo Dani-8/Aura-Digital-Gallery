@@ -1,0 +1,11 @@
+name: Aura Gallery CI/CD Pipeline
+
+on:
+  push:
+    branches:
+    - main
+
+
+jobs:
+    deploy:
+        

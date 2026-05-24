@@ -8,6 +8,8 @@ import fs from "fs"
 import dotenv from "dotenv"
 dotenv.config()
 
+// =====================================================================
+
 let config = {}
 try {
     config = yaml.load(fs.readFileSync("./config.yaml", "utf8"))
@@ -15,18 +17,20 @@ try {
     console.error("Error loading config file:", err)
 }
 // =====================================================================
-// =====================================================================
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 
-app.get("/", (req, res) => {
-    res.send("HI")
-})
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_CONNECT || config.mongodb.uri, config.database.options)
+    .then(() => console.log('Aura Gallery DB Connected'))
+    .catch(err => console.error('DB Connection Error:', err))
 
 
+// Routes
 
 
 // ---------------------------------------------------------------------
