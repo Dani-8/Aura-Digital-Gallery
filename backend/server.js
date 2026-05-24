@@ -31,7 +31,7 @@ mongoose.connect(process.env.MONGODB_CONNECT || config.mongodb.uri, config.datab
 
 
 // Routes
-
+app.use(config.server.apiBasePath + "/art", require("./routes/art"))
 
 // ---------------------------------------------------------------------
 
