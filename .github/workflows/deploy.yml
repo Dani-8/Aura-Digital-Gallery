@@ -3,10 +3,37 @@ name: Aura Gallery CI/CD Pipeline
 on:
   push:
     branches:
-    - main
+      - main
 
+env:
+  NODE_VERSION: '20'
 
 jobs:
-    deploy:
-        
-        
+  deploy:
+    name: Production Deployment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./frontend
+
+      - name: Build Project
+        run: npm run build
+        working-directory: ./frontend
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Deploy to Vercel Production
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: ./frontend

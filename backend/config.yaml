@@ -3,6 +3,7 @@ server:
   env: "development"
   apiBasePath: "/api/v1"
 
+
 database:
   url: ${MONGODB_CONNECT}
   options: 
@@ -15,6 +16,7 @@ security:
   jwt_secret: "aura_digital_secret_2024"
   token_expiry: "24h"
   cors_origin: "http://localhost:3000"
+
 
 deployment:
   platform: "vercel"
