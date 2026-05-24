@@ -16,17 +16,22 @@ try {
 }
 // =====================================================================
 // =====================================================================
-// =====================================================================
-
-
 
 const app = express()
+
+app.use(cors())
+app.use(express.json())
 
 app.get("/", (req, res) => {
     res.send("HI")
 })
 
-app.listen("4000", ()=>{
-    console.log("Server is running on http://localhost:4000/");
-    
+
+
+
+// ---------------------------------------------------------------------
+
+const PORT = process.env.PORT || config.server.port || 5000
+app.listen(PORT, () => {
+    console.log(`🚀 Aura Backend running on port http://localhost:${PORT}`);
 })
