@@ -21,3 +21,4 @@ security:
 deployment:
   platform: "vercel"
   auto_deploy: true
+  
