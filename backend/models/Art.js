@@ -10,3 +10,5 @@ const ArtSchema = new mongoose.Schema({
 })
 
 export default mongoose.model("Art", ArtSchema)
+
+
