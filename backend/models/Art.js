@@ -9,4 +9,4 @@ const ArtSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now }
 })
 
-export default mongoose.model("Art", ArtSchema)cmd
+export default mongoose.model("Art", ArtSchema)
