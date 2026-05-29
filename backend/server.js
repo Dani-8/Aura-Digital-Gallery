@@ -27,7 +27,7 @@ app.use(express.json())
 
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_CONNECT || config.mongodb.uri, config.database.options)
+mongoose.connect(process.env.MONGODB_CONNECT || config.mongodb.uri)
     .then(() => console.log('Aura Gallery DB Connected'))
     .catch(err => console.error('DB Connection Error:', err))
 

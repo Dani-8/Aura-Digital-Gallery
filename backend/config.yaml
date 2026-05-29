@@ -4,12 +4,8 @@ server:
   apiBasePath: "/api/v1"
 
 
-database:
+mongodb:
   url: ${MONGODB_CONNECT}
-  options: 
-    useNewUrlParser: true
-    useUnifiedTopology: true
-    maxPoolSize: 10
 
 
 security:
