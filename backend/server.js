@@ -8,6 +8,8 @@ import fs from "fs"
 import dotenv from "dotenv"
 dotenv.config()
 
+import artRoutes from "./routes/art.js"
+
 // =====================================================================
 
 let config = {}
@@ -31,8 +33,7 @@ mongoose.connect(process.env.MONGODB_CONNECT || config.mongodb.uri, config.datab
 
 
 // Routes
-app.use(config.server.apiBasePath + "/art", require("./routes/art"))
-
+app.use(config.server.apiBasePath + "/art", artRoutes)
 // ---------------------------------------------------------------------
 
 const PORT = process.env.PORT || config.server.port || 5000
