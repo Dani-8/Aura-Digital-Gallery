@@ -11,11 +11,17 @@ import { useArtworks } from './hooks/useArtworks'
 export default function App() {
   const [activeTab, setActiveTab] = useState("gallery")
   const [searchTerm, setSearchTerm] = useState("")
-  
+
   const { artworks, loading, createArtwork, removeArtwork } = useArtworks()
 
-  const filteredArt = artworks.filter(a => 
-    a.title?.toLowerCase().includes(searchTerm.toLowerCase()) || 
+  const TABS = [
+    { id: "gallery", label: "Gallery", icon: <LayoutGrid size={16} /> },
+    { id: "upload", label: "Create", icon: <Plus size={16} /> },
+    { id: "backend", label: "Backend", icon: <Database size={16} /> },
+  ]
+
+  const filteredArt = artworks.filter(a =>
+    a.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     a.artist?.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
@@ -30,50 +36,28 @@ export default function App() {
     await removeArtwork(id);
   }
 
-  
+
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 p-4 md:p-8">
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       <main className="max-w-7xl mx-auto">
-        {/* Manual Tabs Navigation */}
+        {/* Tabs Navigation */}
         <div className="flex justify-center mb-10">
           <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-1 flex">
-            <button
-              onClick={() => setActiveTab("gallery")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                activeTab === "gallery" 
-                  ? "bg-zinc-800 text-white" 
-                  : "text-zinc-400 hover:text-zinc-200"
-              }`}
-            >
-              <LayoutGrid size={16} />
-              Gallery
-            </button>
-
-            <button
-              onClick={() => setActiveTab("upload")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                activeTab === "upload" 
-                  ? "bg-zinc-800 text-white" 
-                  : "text-zinc-400 hover:text-zinc-200"
-              }`}
-            >
-              <Plus size={16} />
-              Create
-            </button>
-
-            <button
-              onClick={() => setActiveTab("backend")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                activeTab === "backend" 
-                  ? "bg-zinc-800 text-white" 
-                  : "text-zinc-400 hover:text-zinc-200"
-              }`}
-            >
-              <Database size={16} />
-              Backend
-            </button>
+            {TABS.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === tab.id
+                    ? "bg-zinc-800 text-white"
+                    : "text-zinc-400 hover:text-zinc-200"
+                  }`}
+              >
+                {tab.icon}
+                {tab.label}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -94,13 +78,15 @@ export default function App() {
           </div>
         )}
 
+
         {/* Upload Tab */}
         {activeTab === "upload" && (
-          <AddArtForm 
-            onAdd={handleAddArt} 
-            onCancel={() => setActiveTab("gallery")} 
+          <AddArtForm
+            onAdd={handleAddArt}
+            onCancel={() => setActiveTab("gallery")}
           />
         )}
+
 
         {/* Backend Info Tab */}
         {activeTab === "backend" && (

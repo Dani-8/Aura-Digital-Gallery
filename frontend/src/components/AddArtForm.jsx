@@ -62,13 +62,16 @@ export default function AddArtForm({ onAdd, onCancel }) {
                         onChange={e => setNewArt({ ...newArt, medium: e.target.value })}
                     />
 
-                    <input
-                        type="text"
-                        placeholder="Price"
-                        className="bg-zinc-950 border border-zinc-700 focus:border-zinc-600 rounded-lg px-4 py-3 text-sm outline-none"
-                        value={newArt.price}
-                        onChange={e => setNewArt({ ...newArt, price: e.target.value })}
-                    />
+                    <div className="relative flex items-center">
+                        <span className="absolute left-4 text-zinc-500 text-sm">$</span>
+                        <input
+                            type="text"
+                            placeholder="Price"
+                            className="w-full bg-zinc-950 border border-zinc-700 focus:border-zinc-600 rounded-lg pl-8 pr-4 py-3 text-sm outline-none"
+                            value={newArt.price}
+                            onChange={e => setNewArt({ ...newArt, price: e.target.value })}
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -86,7 +89,7 @@ export default function AddArtForm({ onAdd, onCancel }) {
                 <button
                     type="button"
                     onClick={handleSubmit}
-                    className="cursor-pointer px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg transition-colors"
+                    className="cursor-pointer px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg transition-all duration-400 active:scale-90"
                 >
                     Save to Database
                 </button>

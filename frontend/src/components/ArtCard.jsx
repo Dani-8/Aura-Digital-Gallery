@@ -21,14 +21,14 @@ export default function ArtCard({ art, onDelete }) {
           
           {art.price && (
             <span className="px-3 py-1 text-xs font-medium bg-zinc-800 text-zinc-300 rounded-full">
-              {art.price}
+              ${art.price}
             </span>
           )}
         </div>
 
         <button
           onClick={() => onDelete(art._id)}
-          className="cursor-pointer w-full mt-4 flex items-center justify-center gap-2 bg-transparent hover:bg-red-950/30 border border-red-900/50 hover:border-red-700 text-red-400 py-2.5 rounded-lg text-sm font-medium transition-colors"
+          className="cursor-pointer w-full mt-4 flex items-center justify-center gap-2 bg-transparent hover:bg-red-950/30 border border-red-900/50 hover:border-red-700 text-red-400 py-2.5 rounded-lg text-sm font-medium transition-all duration-400 active:scale-90"
         >
           <Trash2 size={16} />
           Delete

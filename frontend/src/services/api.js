@@ -20,8 +20,8 @@ export const addArtwork = async (artData) => {
 }
 
 
-export const deleteArtwork = async (artData) => {
-    const res = await fetch(`${API_BASE}/art`, {
+export const deleteArtwork = async (artId) => {
+    const res = await fetch(`${API_BASE}/art/${artId}`, {
         method: "DELETE",
     })
 
