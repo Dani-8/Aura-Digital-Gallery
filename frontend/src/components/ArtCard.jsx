@@ -11,6 +11,7 @@ export default function ArtCard({ art, onDelete }) {
         />
       </div>
       
+      
       <div className="p-6">
         <div className="flex justify-between items-start mb-2">
           <div>

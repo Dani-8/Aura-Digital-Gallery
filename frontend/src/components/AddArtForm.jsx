@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 export default function AddArtForm({ onAdd, onCancel }) {
     const [newArt, setNewArt] = useState({
@@ -7,20 +7,20 @@ export default function AddArtForm({ onAdd, onCancel }) {
         medium: "",
         price: "",
         url: ""
-    });
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!newArt.title || !newArt.url) return;
         onAdd(newArt);
-    };
+    }
 
     return (
         <div className="max-w-2xl mx-auto bg-zinc-900 border border-zinc-700 rounded-2xl text-zinc-100 overflow-hidden">
             {/* Header */}
             <div className="px-8 pt-8 pb-6 border-b border-zinc-700">
                 <h2 className="text-2xl font-bold">Add New Artwork</h2>
-                
+
                 <p className="text-zinc-500 text-sm mt-1">
                     All data goes to MongoDB via Express API
                 </p>
