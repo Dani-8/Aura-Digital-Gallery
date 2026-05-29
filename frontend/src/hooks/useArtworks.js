@@ -13,13 +13,44 @@ export const useArtworks = () => {
             const data = await fetchArtworks()
             setArtworks(data)
             setError(null)
-        } catch(err) {
+        } catch (err) {
             setError(err.message || "Failed to load artworks")
         } finally {
             setLoading(false)
         }
     }
 
+
+    const createNewArtwork = async (artData) => {
+        try {
+            await addArtwork(artData)
+            await loadArtworks();
+            return true;
+        } catch (err) {
+            setError(err.message);
+            return false;
+        }
+    }
+
+
+    const removeArtwork = async (artId) => {
+        try {
+            await deleteArtwork(artId)
+            setArtworks(prev => prev.filter(art => art.id !== artId))
+            return true
+        } catch (err) {
+            setError(err.message)
+            return false
+        }
+    }
+
+
+    useEffect(() => {
+        loadArtworks()
+    }, [])
+
+
+    return { artworks, loading, error, createNewArtwork, removeArtwork }
 }
 
 
