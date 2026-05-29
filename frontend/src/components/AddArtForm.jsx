@@ -78,7 +78,7 @@ export default function AddArtForm({ onAdd, onCancel }) {
                 <button
                     type="button"
                     onClick={onCancel}
-                    className="px-6 py-2.5 text-sm font-medium text-zinc-400 hover:text-zinc-200 transition-colors"
+                    className="cursor-pointer px-6 py-2.5 text-sm font-medium text-zinc-400 hover:text-zinc-200 transition-colors"
                 >
                     Cancel
                 </button>
@@ -86,7 +86,7 @@ export default function AddArtForm({ onAdd, onCancel }) {
                 <button
                     type="button"
                     onClick={handleSubmit}
-                    className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg transition-colors"
+                    className="cursor-pointer px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg transition-colors"
                 >
                     Save to Database
                 </button>

@@ -21,7 +21,7 @@ export const useArtworks = () => {
     }
 
 
-    const createNewArtwork = async (artData) => {
+    const createArtwork = async (artData) => {
         try {
             await addArtwork(artData)
             await loadArtworks();
@@ -50,7 +50,7 @@ export const useArtworks = () => {
     }, [])
 
 
-    return { artworks, loading, error, createNewArtwork, removeArtwork }
+    return { artworks, loading, error, createArtwork, removeArtwork }
 }
 
 
