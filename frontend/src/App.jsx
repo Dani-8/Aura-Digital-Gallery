@@ -60,6 +60,7 @@ export default function App() {
             ))}
           </div>
         </div>
+        
 
         {/* Gallery Tab */}
         {activeTab === "gallery" && (
